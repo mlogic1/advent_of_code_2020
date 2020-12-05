@@ -76,4 +76,5 @@ int main()
     }
 
     Task(passwordsList);
+    return 0;
 }
