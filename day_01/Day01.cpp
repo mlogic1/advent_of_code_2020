@@ -14,6 +14,7 @@
 #include "../common/Common.h"
 #include <iostream>
 #include <string>
+#include <thread>
 
 const std::string inputFileName = "Day01.txt";
 const int TargetSum = 2020;
@@ -91,7 +92,6 @@ void Task2(const std::vector<int>& numbersList)
     }
 }
 
-
 int main()
 {
     std::vector<int> numbersList;
@@ -105,6 +105,9 @@ int main()
         return -1;
     }
 
-    Task1(numbersList);
-    Task2(numbersList);
+    std::thread Task1Thread(Task1, numbersList);
+    std::thread Task2Thread(Task2, numbersList);
+    Task1Thread.join();
+    Task2Thread.join();
+    return 0;
 }
